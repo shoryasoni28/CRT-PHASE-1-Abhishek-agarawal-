@@ -33,3 +33,21 @@ int main()
 
     return 0;
 }
+//program 3 
+//triangle equipateral or not
+#include <iostream>
+using namespace std;
+
+int main() {
+    int side1, side2, side3;
+
+    cin >> side1 >> side2 >> side3;
+
+    bool isEqu = (side1 > 0) && (side1 == side2) && (side2 == side3);
+
+    cout << isEqu << endl;
+
+    return 0;
+}
+//program 4
+//swap two variables
