@@ -70,3 +70,30 @@ int main()
 
     return 0;
 }
+//program 5
+//logic credential
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int userId = 1234;
+    int userPassword = 0000;
+
+    int inputId, inputPassword;
+
+    cout << "Enter User ID: ";
+    cin >> inputId;
+
+    cout << "Enter Password: ";
+    cin >> inputPassword;
+
+    bool isGranted = (userId == inputId) && (userPassword == inputPassword);
+
+    if (isGranted)
+        cout << "Access Granted" << endl;
+    else
+        cout << "Access Denied" << endl;
+
+    return 0;
+}
