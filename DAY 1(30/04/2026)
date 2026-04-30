@@ -13,3 +13,23 @@ int main() {
 
     return 0;
 }
+
+//localvariable & globalvariable
+#include <iostream>
+using namespace std;
+
+int global_variable = 100;
+
+int main()
+{
+    int local_variable;
+    int result;
+
+    cin >> local_variable;
+
+    result = global_variable / local_variable;
+
+    cout << result << endl;
+
+    return 0;
+}
