@@ -145,4 +145,32 @@ int main(){
       }
       return 0;
   }
-//
+//smart home lighting 
+// day--motion(yes/no)--light off
+//night--motion(yes--100%) (no-- 10%)
+#include<iostream>
+  using namespace std;
+  int main(){
+      
+      string dayornight;
+      bool motiondetected;
+      
+      cout<<"is it day or night?..";
+      cin>>dayornight;
+      cout<<"is motion detected?...";
+      cin>>motiondetected;
+      
+      if(dayornight == "night"){
+          if(motiondetected){
+              cout<<"turn on led with 100% brightness";
+          } else{
+              cout<<"turn on led with 10 % brightness";
+          }
+          } else{
+              cout<<"turn off the lights...";
+          
+      }
+      
+      
+      return 0;
+  }
