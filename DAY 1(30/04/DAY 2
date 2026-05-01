@@ -1,0 +1,37 @@
+//if condition
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age;
+    
+    cin >> age;
+    if(age >= 18){
+        cout << "eligible";
+    }
+
+
+    return 0;
+}
+//if else condition
+
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int age;
+    
+    cin >> age;
+    if(age >= 18){
+        cout << "eligible";
+    }
+    else{
+        cout<<"not eligibole";
+    }
+
+
+    return 0;
+}
+//nested condition in condition branchiy
