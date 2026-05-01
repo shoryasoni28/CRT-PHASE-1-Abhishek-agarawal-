@@ -119,3 +119,30 @@ int main(){
     }
     return 0;
 }
+//an ivr system using switch statement
+#include<iostream>
+  using namespace std;
+  int main(){
+      int choice;
+      cin>> choice;
+      
+      switch (choice) {
+          
+          case 1:
+          cout<<"transfering call to support team ..";
+          break;
+          case 2:
+          cout<<"transfering call to billing and account department ..";
+          break;
+          case 3:
+          cout<<"transfering call to technical team ..";
+          break;
+          case 4:
+          cout<<"please wait while we are connecting your call to an agent ..";
+          break;
+          default:
+          cout<<"enter a valid choice!";
+      }
+      return 0;
+  }
+//
