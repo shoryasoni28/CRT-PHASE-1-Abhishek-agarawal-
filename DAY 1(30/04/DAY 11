@@ -1,233 +1,149 @@
-Linear Search 
-#include <iostream>
-#include <vector>
-
-int linearSearch(const std::vector<int>& arr, int target) {
-    for (int i = 0; i < arr.size(); ++i) {
-        if (arr[i] == target) {
-            return i;
-        }
-    }
-    return -1;
-}
-
-int main() {
-    std::vector<int> numbers = {10, 23, 45, 70, 11, 15};
-    int target = 70;
-    
-    int result = linearSearch(numbers, target);
-    
-    std::cout << result << "\n";
-    
-    return 0;
-}
-
-Binary Search 
-#include <iostream>
-#include <vector>
-
-int binarySearch(const std::vector<int>& arr, int target) {
-    int left = 0;
-    int right = arr.size() - 1;
-
-    while (left <= right) {
-        int mid = left + (right - left) / 2;
-
-        if (arr[mid] == target) {
-            return mid;
-        }
-        if (arr[mid] < target) {
-            left = mid + 1;
-        } else {
-            right = mid - 1;
-        }
-    }
-    return -1;
-}
-
-int main() {
-    std::vector<int> numbers = {10, 11, 15, 23, 45, 70};
-    int target = 70;
-    
-    int result = binarySearch(numbers, target);
-    
-    std::cout << result << "\n";
-    
-    return 0;
-}
-
-Bubble Sort
-#include <iostream>
-#include <vector>
-
-void bubbleSort(std::vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 0; i < n - 1; ++i) {
-        for (int j = 0; j < n - i - 1; ++j) {
-            if (arr[j] > arr[j + 1]) {
-                int temp = arr[j];
-                arr[j] = arr[j + 1];
-                arr[j + 1] = temp;
-            }
-        }
-    }
-}
-
-int main() {
-    std::vector<int> numbers = {70, 45, 23, 15, 11, 10};
-    
-    bubbleSort(numbers);
-    
-    for (int i = 0; i < numbers.size(); ++i) {
-        std::cout << numbers[i] << " ";
-    }
-    std::cout << "\n";
-    
-    return 0;
-}
-
-selection sort
-#include <iostream>
-#include <vector>
-
-void selectionSort(std::vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 0; i < n - 1; ++i) {
-        int minIndex = i;
-        for (int j = i + 1; j < n; ++j) {
-            if (arr[j] < arr[minIndex]) {
-                minIndex = j;
-            }
-        }
-        if (minIndex != i) {
-            int temp = arr[i];
-            arr[i] = arr[minIndex];
-            arr[minIndex] = temp;
-        }
-    }
-}
-
-int main() {
-    std::vector<int> numbers = {70, 45, 23, 15, 11, 10};
-    
-    selectionSort(numbers);
-    
-    for (int i = 0; i < numbers.size(); ++i) {
-        std::cout << numbers[i] << " ";
-    }
-    std::cout << "\n";
-    
-    return 0;
-}
-
-Insertion sort
-#include <iostream>
-#include <vector>
-
-void insertionSort(std::vector<int>& arr) {
-    int n = arr.size();
-    for (int i = 1; i < n; ++i) {
-        int key = arr[i];
-        int j = i - 1;
-
-        while (j >= 0 && arr[j] > key) {
-            arr[j + 1] = arr[j];
-            j = j - 1;
-        }
-        arr[j + 1] = key;
-    }
-}
-
-int main() {
-    std::vector<int> numbers = {70, 45, 23, 15, 11, 10};
-    
-    insertionSort(numbers);
-    
-    for (int i = 0; i < numbers.size(); ++i) {
-        std::cout << numbers[i] << " ";
-    }
-    std::cout << "\n";
-    
-    return 0;
-}
-
-Recursion 
-Print 1 to 10
-#include <iostream>
-
-void printNumbers(int n) {
-    if (n > 10) {
-        return;
-    }
-    std::cout << n << " ";
-    printNumbers(n + 1);
-}
-
-int main() {
-    printNumbers(1);
-    std::cout << "\n";
-    return 0;
-}
-
-Factorial Of a Number
-#include <iostream>
-
-int factorial(int n) {
-    if (n <= 1) {
-        return 1;
-    }
-    return n * factorial(n - 1);
-}
-
-int main() {
-    int number = 5;
-    
-    int result = factorial(number);
-    
-    std::cout << result << "\n";
-    
-    return 0;
-}
-
-Fibonacci Series 
-#include <iostream>
-
-int fibonacci(int n) {
-    if (n <= 1) {
-        return n;
-    }
-    return fibonacci(n - 1) + fibonacci(n - 2);
-}
-
-int main() {
-    int n = 10;
-    
-    for (int i = 0; i < n; ++i) {
-        std::cout << fibonacci(i) << " ";
-    }
-    
-    std::cout << "\n";
-    
-    return 0;
-}
-
-LeetCode 70
-Climbing stairs 
+LeetCode 189
+Rotate Array
 class Solution {
-private:
-    int recursive(int n, int curr) {
-        if (curr == n) {
-            return 1;
-        }
-        if (curr > n) {
-            return 0;
-        }
+public:
 
-        return recursive(n, curr + 1) + recursive(n, curr + 2);
+    void reverse(vector<int>& nums, int start, int end) {
+        while(start < end){
+        swap(nums[start], nums[end]);
+        start++;
+        end--;
+        }
     }
 
-public:
-    int climbStairs(int n) {
-        return recursive(n, 0);
+    void rotate(vector<int>& nums, int k) {
+        int n = nums.size();
+        k = k % n;
+        reverse(nums, 0, n - 1); // rotate complete array 
+        reverse(nums, 0, k - 1);// rotate first k elements
+        reverse(nums, k, n - 1); // rotate rest of the elements
     }
 };
+
+LeetCode 344
+Reverse String
+class Solution {
+public:
+    void reverseString(vector<char>& s) {
+        int start = 0;
+        int end = s.size() - 1;
+
+        while(start < end) {
+            char c = s[start];
+            s[start] = s[end];
+            s[end] = c;
+            start++;
+            end--;
+        }
+    }
+};
+
+Leetcode 796
+Rotate String 
+class Solution {
+public:
+    bool rotateString(string s, string goal) {
+
+        if(s.size() != goal.size()){
+            return false;
+        }
+
+        string doubleString = s + s;
+        return doubleString.contains(goal);
+
+    }
+};
+
+
+LeetCode 242
+Valid Anagram
+class Solution {
+public:
+    bool isAnagram(string s, string t) {
+
+        if(s.size() != t.size()){
+            return false;
+        }
+
+        sort(s.begin() , s.end());
+        sort(t.begin(), t.end());
+
+        if(s == t) {
+            return true;
+        }else {
+            return false;
+        }
+    }
+};
+
+#include <iostream>
+using namespace std;
+
+// bool isPalindrome(string str) {
+//     int start = 0;
+//     int end = str.size() - 1;
+//     while(start < end) {
+//         if(str[start] != str[end]){
+//             return false;
+//         }
+//         start++;
+//         end--;
+//     }
+//     return true;
+// }
+
+// int main()
+// {
+//     string str;
+//     cout << "Enter a String...";
+//     cin >> str;
+    
+//     if(isPalindrome(str)) {
+//         cout << "Given string is a Palindrome String...";
+//     } else {
+//         cout << "Given string is not a Palindrome String...";
+//     }
+
+//     return 0;
+// }
+
+
+int main() {
+    int n;
+    cout << "Enter a size of array...";
+    cin >> n;
+    
+    int arr[n];
+    
+    cout << "Enter the sorted array...";
+    for(int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+    int target;
+    cout << "Enter the target element...";
+    cin >> target;
+    
+    // Binary search code
+    int low = 0;
+    int high = n - 1;
+    bool found = false;
+    
+    while(low <= high){
+        int mid = (low + high) / 2;
+        
+        if(arr[mid] == target) {
+            cout << "Element found at index " << mid;
+            found = true;
+            break;
+        } else if (arr[mid] < target){ 
+            low = mid + 1;
+    } else {
+        high = mid - 1;
+    }
+}
+
+if(found == false) {
+    cout << "Element not found...";
+}
+return 0;
+}
